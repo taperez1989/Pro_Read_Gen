@@ -1,8 +1,10 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
+let licenseBadgeUrl;
+let licenseTermsUrl;
 
 // This const variable is my solution for plugging in the answers the user entered in the application, made this in a separate HTML for design purposes and then made copied it here but making it a template literal.
-const generateHTML = ({ title, description, install, usage, guidelines, test, license, username, email }) =>
+const generateHTML = ({ title, description, install, usage, guidelines, test, license, username, email, licenseBadgeUrl, licenseTermsUrl }) =>
     `<!DOCTYPE html>
 <html lang="en">
 
@@ -46,7 +48,8 @@ const generateHTML = ({ title, description, install, usage, guidelines, test, li
             <p class="container">${test}</p>
             <h5 id="license">Choose License</h5>
             <p class="container">This application is licensed under the: ${license}</p>
-
+            <p> license Badge: <img src="${licenseBadgeUrl}" alt="license badge"> </p>
+            <p> Terms and conditions: <a href="${licenseTermsUrl}" target="_blank"></a></p>
             <div>
                 <h6 id="questions">Questions</h6>
                 <li>Email: ${email}</li>
@@ -117,31 +120,38 @@ inquirer
     .then((answers) => {
 
         let license = answers.license;
-        let licenseBadgeUrl;
+        let licenseBadgeUrl = answers.licenseBadgeUrl;
+        let licenseTermsUrl = answers.licenseTermsUrl;
 
         switch (license) {
             case 'MIT License':
-                liscenseBaqgeUrl = '[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)';
+                licenseBadgeUrl = 'https://img.shields.io/badge/License-MIT-yellow.svg';
+                licenseTermsUrl = 'https://opensource.org/licenses/MIT';
                 break;
             case 'Apache License':
-                liscenseBaqgeUrl = '[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)';
+                licenseBadgeUrl = 'https://img.shields.io/badge/License-Apache_2.0-blue.svg';
+                licenseTermsUrl = 'https://opensource.org/licenses/Apache-2.0';
                 break;
             case 'Perl license':
-                liscenseBaqgeUrl = '[![License: Artistic-2.0](https://img.shields.io/badge/License-Perl-0298c3.svg)](https://opensource.org/licenses/Artistic-2.0)';
+                licenseBadgeUrl = 'https://img.shields.io/badge/License-Perl-0298c3.svg';
+                licenseTermsUrl = 'https://opensource.org/licenses/Artistic-2.0';
                 break;
             case 'BSD License':
-                liscenseBaqgeUrl = '[![License](https://img.shields.io/badge/License-BSD_2--Clause-orange.svg)](https://opensource.org/licenses/BSD-2-Clause)';
+                licenseBadgeUrl = 'https://img.shields.io/badge/License-BSD_2--Clause-orange.svg';
+                licenseTermsUrl = 'https://opensource.org/licenses/BSD-2-Clause';
                 break;
             case 'Mozilla Public License (MPL)':
-                liscenseBaqgeUrl = '[![License: MPL 2.0](https://img.shields.io/badge/License-MPL_2.0-brightgreen.svg)](https://opensource.org/licenses/MPL-2.0)';
+                licenseBadgeUrl = 'https://img.shields.io/badge/License-MPL_2.0-brightgreen.svg';
+                licenseTermsUrl = 'https://opensource.org/licenses/MPL-2.0';
                 break;
             default:
                 console.log('Select License')
         }
+        console.log(license, licenseBadgeUrl, licenseTermsUrl);
 
-        const htmlPageContent = generateHTML(answers, license, licenseBadgeUrl);
+        const htmlPageContent = generateHTML(answers, license, licenseBadgeUrl, licenseTermsUrl);
 
-        fs.writeFile('index.HTML', htmlPageContent, (err) =>
+        fs.writeFile('index.html', htmlPageContent, (err) =>
             err ? console.error(err) : console.log('Success!')
         );
     })
