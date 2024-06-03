@@ -14,13 +14,13 @@
 To dynamically create a professional readme.md file using npm inquirer to prompt the user with a series of questions for the readme file
 
 ## Installation
-use npm install for the inquirer package
+ use npm install for the inquirer package
 
 ## Usage Info
 basic questions that professional readme file would have
 
 ## Contribution Guidelines
- user inputs
+user inputs
 
 ## Test Instructions
 run node index.js
@@ -30,6 +30,6 @@ This project is licensed under: MIT License
 undefined
 undefined
 ## Questions
-Link to my Github: taperez1989
+undefined
 
 For questions, Please contact me: taperez1989@yahoo.com

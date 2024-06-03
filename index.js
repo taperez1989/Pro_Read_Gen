@@ -5,7 +5,7 @@ const fs = require('fs');
 // let githubProfileUrl = `https://github.com/${username}`;
 
 // This const variable is my solution for plugging in the answers the user entered in the application, made this in a separate HTML for design purposes and then made copied it here but making it a template literal.
-const generateHTML = ({ title, description, install, usage, guidelines, test, license, username, email, licenseBadgeUrl, licenseTermsUrl }) => {
+const generateReadme = ({ title, description, install, usage, guidelines, test, license, email, licenseBadgeUrl, licenseTermsUrl, githubLink }) => {
     return `## ${title}
 
 ## Table of Contents
@@ -38,7 +38,7 @@ This project is licensed under: ${license}
 ${licenseBadgeUrl}
 ${licenseTermsUrl}
 ## Questions
-Link to my Github: https://github.com/${username}
+${githubLink}
 
 For questions, Please contact me: ${email}`;
 };
@@ -100,6 +100,8 @@ inquirer
 
     .then((answers) => {
         let license = answers.license;
+        let username = answers.username;
+        let githubLink = `Link to my Github: https://github.com/${username}`;
         let licenseBadgeUrl;
         let licenseTermsUrl;
 
@@ -129,9 +131,9 @@ inquirer
         }
         console.log(answers);
 
-        const htmlPageContent = generateHTML(answers);
+        const readmeContent = generateReadme(answers, githubLink);
 
-        fs.writeFile('README.md', htmlPageContent, (err) =>
+        fs.writeFile('README.md', readmeContent, (err) =>
             err ? console.error(err) : console.log('Success!')
         );
     })
