@@ -10,13 +10,13 @@ const generateReadme = ({ title, description, install, usage, guidelines, test, 
 
 ## Table of Contents
 
-    - <a href='#description'><h4>Description</h4>
-    - [Installation](#installation)
-    - [Usage Info](#usage-info)
-    - [Contribution Guidelines](#contribution-guidelines)
-    - [Test Instructions](#test-instructions)
-    - [License](#license)
-    - [Questions](#questions)
+    - [Description](#Description)
+    - [Installation](#Installation)
+    - [Usage Info](#Usage-Info)
+    - [Contribution Guidelines](#Contribution-Guidelines)
+    - [Test Instructions](#Test-Instructions)
+    - [License](#License)
+    - [Questions](#Questions)
 
 ## Description
 ${description}
@@ -38,7 +38,7 @@ This project is licensed under: ${license}
 ${licenseBadgeUrl}
 ${licenseTermsUrl}
 ## Questions
-Link to my Github: github.com/${username}
+Link to my Github: http://github.com/${username}
 
 For questions, Please contact me: ${email}`
 };
@@ -105,8 +105,8 @@ inquirer
 
         switch (license) {
             case 'MIT License':
-                licenseBadgeUrl = 'https://img.shields.io/badge/License-MIT-yellow.svg';
-                licenseTermsUrl = 'https://opensource.org/licenses/MIT';
+                licenseBadgeUrl = 'http://img.shields.io/badge/License-MIT-yellow.svg';
+                licenseTermsUrl = 'http://opensource.org/licenses/MIT';
                 break;
             case 'Apache License':
                 licenseBadgeUrl = 'https://img.shields.io/badge/License-Apache_2.0-blue.svg';
