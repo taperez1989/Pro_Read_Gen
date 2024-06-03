@@ -1,64 +1,48 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
+// let licenseBadgeUrl;
+// let licenseTermsUrl;
+// let githubProfileUrl = `https://github.com/${username}`;
 
 // This const variable is my solution for plugging in the answers the user entered in the application, made this in a separate HTML for design purposes and then made copied it here but making it a template literal.
-const generateHTML = ({ title, description, install, usage, guidelines, test, license, username, email }) =>
-    `<!DOCTYPE html>
-<html lang="en">
+const generateHTML = ({ title, description, install, usage, guidelines, test, license, username, email, licenseBadgeUrl, licenseTermsUrl }) => {
+    return `## ${title}
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Professional README</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+## Table of Contents
 
-</head>
+    - [Description](#description)
+    - [Installation](#installation)
+    - [Usage Info](#usage-info)
+    - [Contribution Guidelines](#contribution-guidelines)
+    - [Test Instructions](#test-instructions)
+    - [License](#license)
+    - [Questions](#questions)
 
-<body>
-    <header>
-        <div class="container">
-            <h1 class="display-1">${title}</h1>
+## Description
+${description}
 
-        </div>
-    </header>
-    <section>
-        <div class="container">
-            <h5>Table of Contents</h5>
-            <div class="list-group">
-                <a href="#description" class="list-group-item list-group-item-action">Description</a>
-                <a href="#installation" class="list-group-item list-group-item-action">Installation Instructions</a>
-                <a href="#usage" class="list-group-item list-group-item-action">Usage Info</a>
-                <a href="#guidelines" class="list-group-item list-group-item-action">Contribution guidelines</a>
-                <a href="#test" class="list-group-item list-group-item-action">Test Instructions</a>
-                <a href="#license" class="list-group-item list-group-item-action">License</a>
-                <a href="#questions" class="list-group-item list-group-item-action">Questions</a>
-            </div>
-            <h5 id="description">Description</h5>
-            <p class="container">${description}</p>
-            <h5 id="installation">Installation Instructions</h5>
-            <p class="container">${install}</p>
-            <h5 id="usage">Usage Info</h5>
-            <p class="container">${usage}</p>
-            <h5 id="guidelines">Contribution guidelines</h5>
-            <p class="container">${guidelines}</p>
-            <h5 id="test">Test Instructions</h5>
-            <p class="container">${test}</p>
-            <h5 id="license">Choose License</h5>
-            <p class="container">This application is licensed under the: ${license}</p>
+## Installation
+${install}
 
-            <div>
-                <h6 id="questions">Questions</h6>
-                <li>Email: ${email}</li>
-                <li>Github Username: ${username}</li>
-            </div>
-        </div>
-    </section>
+## Usage Info
+${usage}
 
+## Contribution Guidelines
+${guidelines}
 
-</body>
+## Test Instructions
+${test}
 
-</html>`;
+## License
+This project is licensed under: ${license}
+${licenseBadgeUrl}
+${licenseTermsUrl}
+## Questions
+Link to my Github: https://github.com/${username}
+
+For questions, Please contact me: ${email}`;
+};
+
 
 // inquirer prompts that provide the questions the user is supposed to answer.
 
@@ -115,33 +99,39 @@ inquirer
     // the then statement is meant to take the answers the user provides and generates them into an HTML file which is what the fs.writefile is for.
 
     .then((answers) => {
-
         let license = answers.license;
         let licenseBadgeUrl;
+        let licenseTermsUrl;
 
         switch (license) {
             case 'MIT License':
-                liscenseBaqgeUrl = '[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)';
+                licenseBadgeUrl = 'https://img.shields.io/badge/License-MIT-yellow.svg';
+                licenseTermsUrl = 'https://opensource.org/licenses/MIT';
                 break;
             case 'Apache License':
-                liscenseBaqgeUrl = '[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)';
+                licenseBadgeUrl = 'https://img.shields.io/badge/License-Apache_2.0-blue.svg';
+                licenseTermsUrl = 'https://opensource.org/licenses/Apache-2.0';
                 break;
             case 'Perl license':
-                liscenseBaqgeUrl = '[![License: Artistic-2.0](https://img.shields.io/badge/License-Perl-0298c3.svg)](https://opensource.org/licenses/Artistic-2.0)';
+                licenseBadgeUrl = 'https://img.shields.io/badge/License-Perl-0298c3.svg';
+                licenseTermsUrl = 'https://opensource.org/licenses/Artistic-2.0';
                 break;
             case 'BSD License':
-                liscenseBaqgeUrl = '[![License](https://img.shields.io/badge/License-BSD_2--Clause-orange.svg)](https://opensource.org/licenses/BSD-2-Clause)';
+                licenseBadgeUrl = 'https://img.shields.io/badge/License-BSD_2--Clause-orange.svg';
+                licenseTermsUrl = 'https://opensource.org/licenses/BSD-2-Clause';
                 break;
             case 'Mozilla Public License (MPL)':
-                liscenseBaqgeUrl = '[![License: MPL 2.0](https://img.shields.io/badge/License-MPL_2.0-brightgreen.svg)](https://opensource.org/licenses/MPL-2.0)';
+                licenseBadgeUrl = 'https://img.shields.io/badge/License-MPL_2.0-brightgreen.svg';
+                licenseTermsUrl = 'https://opensource.org/licenses/MPL-2.0';
                 break;
             default:
                 console.log('Select License')
         }
+        console.log(answers);
 
-        const htmlPageContent = generateHTML(answers, license, licenseBadgeUrl);
+        const htmlPageContent = generateHTML(answers);
 
-        fs.writeFile('index.HTML', htmlPageContent, (err) =>
+        fs.writeFile('README.md', htmlPageContent, (err) =>
             err ? console.error(err) : console.log('Success!')
         );
     })
