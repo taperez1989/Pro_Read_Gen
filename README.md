@@ -2,13 +2,13 @@
 
 ## Table of Contents
 
-    - <a href='#description'><h4>Description</h4>
-    - [Installation](#installation)
-    - [Usage Info](#usage-info)
-    - [Contribution Guidelines](#contribution-guidelines)
-    - [Test Instructions](#test-instructions)
-    - [License](#license)
-    - [Questions](#questions)
+    - [Description](#Description)
+    - [Installation](#Installation)
+    - [Usage Info](#Usage-Info)
+    - [Contribution Guidelines](#Contribution-Guidelines)
+    - [Test Instructions](#Test-Instructions)
+    - [License](#License)
+    - [Questions](#Questions)
 
 ## Description
 To dynamically create a professional readme.md file using npm inquirer to prompt the user with a series of questions for the readme file
@@ -30,6 +30,6 @@ This project is licensed under: MIT License
 undefined
 undefined
 ## Questions
-Link to my Github: github.com/taperez1989
+Link to my Github: http://github.com/taperez1989
 
 For questions, Please contact me: taperez1989@yahoo.com
