@@ -1,8 +1,8 @@
-## Professional ReadMe
+## Professional Readme
 
 ## Table of Contents
 
-    - [Description](#description)
+    - <a href='#description'><h4>Description</h4>
     - [Installation](#installation)
     - [Usage Info](#usage-info)
     - [Contribution Guidelines](#contribution-guidelines)
@@ -30,6 +30,6 @@ This project is licensed under: MIT License
 undefined
 undefined
 ## Questions
-undefined
+Link to my Github: github.com/taperez1989
 
 For questions, Please contact me: taperez1989@yahoo.com
