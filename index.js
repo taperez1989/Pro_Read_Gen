@@ -5,12 +5,12 @@ const fs = require('fs');
 // let githubProfileUrl = `https://github.com/${username}`;
 
 // This const variable is my solution for plugging in the answers the user entered in the application, made this in a separate HTML for design purposes and then made copied it here but making it a template literal.
-const generateHTML = ({ title, description, install, usage, guidelines, test, license, username, email, licenseBadgeUrl, licenseTermsUrl }) => {
+const generateReadme = ({ title, description, install, usage, guidelines, test, license, email, licenseBadgeUrl, licenseTermsUrl, username }) => {
     return `## ${title}
 
 ## Table of Contents
 
-    - [Description](#description)
+    - <a href='#description'><h4>Description</h4>
     - [Installation](#installation)
     - [Usage Info](#usage-info)
     - [Contribution Guidelines](#contribution-guidelines)
@@ -38,9 +38,9 @@ This project is licensed under: ${license}
 ${licenseBadgeUrl}
 ${licenseTermsUrl}
 ## Questions
-Link to my Github: https://github.com/${username}
+Link to my Github: github.com/${username}
 
-For questions, Please contact me: ${email}`;
+For questions, Please contact me: ${email}`
 };
 
 
@@ -99,7 +99,7 @@ inquirer
     // the then statement is meant to take the answers the user provides and generates them into an HTML file which is what the fs.writefile is for.
 
     .then((answers) => {
-        let license = answers.license;
+        const license = answers.license;
         let licenseBadgeUrl;
         let licenseTermsUrl;
 
@@ -129,9 +129,9 @@ inquirer
         }
         console.log(answers);
 
-        const htmlPageContent = generateHTML(answers);
+        const readmeContent = generateReadme(answers);
 
-        fs.writeFile('README.md', htmlPageContent, (err) =>
+        fs.writeFile('README.md', readmeContent, (err) =>
             err ? console.error(err) : console.log('Success!')
         );
     })

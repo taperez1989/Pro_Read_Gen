@@ -1,9 +1,8 @@
-
-## Professional ReadMe
+## Professional Readme
 
 ## Table of Contents
 
-    - [Description](#description)
+    - <a href='#description'><h4>Description</h4>
     - [Installation](#installation)
     - [Usage Info](#usage-info)
     - [Contribution Guidelines](#contribution-guidelines)
@@ -21,7 +20,7 @@ use npm install for the inquirer package
 basic questions that professional readme file would have
 
 ## Contribution Guidelines
- user inputs
+user inputs
 
 ## Test Instructions
 run node index.js
@@ -31,7 +30,6 @@ This project is licensed under: MIT License
 undefined
 undefined
 ## Questions
-Link to my Github: taperez1989
+Link to my Github: github.com/taperez1989
 
 For questions, Please contact me: taperez1989@yahoo.com
-
