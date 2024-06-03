@@ -99,9 +99,9 @@ inquirer
     // the then statement is meant to take the answers the user provides and generates them into an HTML file which is what the fs.writefile is for.
 
     .then((answers) => {
-        let license = answers.license;
-        let username = answers.username;
-        let githubLink = `Link to my Github: https://github.com/${username}`;
+        const license = answers.license;
+        const userName = answers.username;
+        const githubLink = `<a href="${userName}" > <h1>CICK ME</h1></a>`
         let licenseBadgeUrl;
         let licenseTermsUrl;
 

@@ -1,4 +1,3 @@
-
 ## Professional ReadMe
 
 ## Table of Contents
@@ -15,7 +14,7 @@
 To dynamically create a professional readme.md file using npm inquirer to prompt the user with a series of questions for the readme file
 
 ## Installation
- use npm install for the inquirer package
+use npm install for the inquirer package
 
 ## Usage Info
 basic questions that professional readme file would have
@@ -34,4 +33,3 @@ undefined
 undefined
 
 For questions, Please contact me: taperez1989@yahoo.com
-
